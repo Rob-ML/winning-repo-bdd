@@ -4,23 +4,23 @@ Feature:
     So that I can get insights on my clients.
 
     Scenario: Get total number of clients
-        Given the source data
+        Given the source data "client_details.csv"
 
-        When the client detail is passed to the get total number of clients process
+        When the csv file is passed to the get total number of clients process
 
         Then the process should return the sum of the distinct id's
 
     Scenario: Get the subtotals for clients in the Transportation sector
-        Given the source data
-        
-        When the client detail is passed to the get subtotal number of clients in the transportation sector process
+        Given the source data "client_details.csv"
+
+        When the csv file is passed to the get subtotal number of clients in the transportation sector process
 
         Then the process should return the sum of distinct id's that have "sector" = "Transportation"
 
     Scenario: Get the subtotals for clients in in the Health Sector that use credit cards from JCB
-        Given the source data
+        Given the source data "client_details.csv"
 
-        When the client detaul is passed to the get subtotal number of clients in the Health Sector with Credit Cards from JCB
+        When the csv file is passed to the get subtotal number of clients in the Health Sector with Credit Cards from JCB
 
         Then the process should return the sum of distinct id's that have "sector" = "Health Care" and "credit_card_type" = "jcb"
 
