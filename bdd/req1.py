@@ -1,3 +1,4 @@
+import os
 from functools import reduce
 from typing import List, Tuple
 
@@ -8,13 +9,10 @@ dir_path = os.path.dirname(os.path.abspath(__file__))
 
 spark = SparkSession.builder.master("local").appName("CreateReq1").getOrCreate()
 
-def get_total_number_of_clients(client_details_path):
+def get_total_number_of_clients():
     
-    spark = SparkSession.builder().getOrCreate()
+    spark = SparkSession.builder.getOrCreate()
     df = spark.read.option("header", True).option("inferSchema", True).csv(
-        dir_path + "/../fixtures/client_details.csv")
+        dir_path + "/tests/fixtures/client_details.csv")
 
     return df.select("id").distinct().count()
-
-
-

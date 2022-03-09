@@ -16,13 +16,10 @@ spark = SparkSession.builder.master("local").appName("TestReq1").getOrCreate()
 @scenario("../features/req1.feature", "Get total number of clients")
 def test_get_total_number_of_clients():
     pass
-
-
-@scenario("../features/req1.feature", "Get the subtotals for clients in the Transportation sector")
-def test_get_subtotal_for_clients_in_transport():
-    pass
-
-
+#
+# @scenario("../features/req1.feature", "Get the subtotals for clients in the Transportation sector")
+# def test_get_subtotal_for_clients_in_transport():
+#     pass
 @pytest.fixture
 @given("the source client details data")
 def source_client_details_data():
@@ -32,8 +29,8 @@ def source_client_details_data():
 
 @pytest.fixture
 @when("the client details is passed to the get total number of clients process")
-def get_total_number_of_clients_result(source_data):
-    return get_total_number_of_clients(dataframe=source_client_details_data)
+def get_total_number_of_clients_result(source_client_details_data):
+    return get_total_number_of_clients()
 
 @then("the process should return the sum of the distinct ids")
 def shows_sum_of_clients(get_total_number_of_clients_result):
